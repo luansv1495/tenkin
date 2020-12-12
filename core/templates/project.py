@@ -4,8 +4,13 @@ import os,sys,shutil
 def template_project_generate(project_path: str):
 
     items = [
-        {'path':'\\build', 'type': 'folder'},
-        {'path':'\\build\\index.html', 'type': 'file', 'template': './core/templates/html/index.html'},
+        {'path':'\\public', 'type': 'folder'},
+        {'path':'\\public\\index.html', 'type': 'file', 'template': './core/templates/base/html/index.html'},
+        {'path':'\\public\\manifest.json', 'type': 'file', 'template': './core/templates/base/json/manifest.json'},
+        {'path':'\\public\\favicon.ico', 'type': 'file', 'template': './core/templates/base/assets/favicon.ico'},
+        {'path':'\\public\\logo192.png', 'type': 'file', 'template': './core/templates/base/assets/logo192.png'},
+        {'path':'\\public\\logo512.png', 'type': 'file', 'template': './core/templates/base/assets/logo512.png'},
+        {'path':'\\public\\service-worker.js', 'type': 'file', 'template': './core/templates/base/js/service-worker.js'},
         {'path':'\\src', 'type': 'folder'},
     ]
 

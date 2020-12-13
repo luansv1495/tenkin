@@ -1,5 +1,5 @@
 var cacheName = 'tenkin-pwa';
-var filesToCache = [];
+var filesToCache = ['/','/index.html'];
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', function(e) {
@@ -17,10 +17,4 @@ self.addEventListener('fetch', function(e) {
       return response || fetch(e.request);
     })
   );
-});
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
 });

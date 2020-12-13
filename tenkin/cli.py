@@ -1,5 +1,5 @@
 import os,sys,click
-from app import TenkinApp
+from tenkin.app import TenkinApp
 
 app = TenkinApp()
 
@@ -9,7 +9,7 @@ app = TenkinApp()
 def run(host,port):
     from uvicorn import run
 
-    with run('cli:app',host=host, port=port,reload=True,workers=8,debug=True):
+    with run('tenkin.cli:app',host=host, port=port,reload=True,workers=8,debug=True):
         print(f"Servidor disponível na porta {port}")
         print(f"Acesse http://{host}:{port}")
         print("Para finalizar o servidor pressione 'Ctrl-c'")
@@ -17,7 +17,7 @@ def run(host,port):
 @click.command()
 @click.option('--project_name',prompt='Project name', type=str)
 def create(project_name):
-    import templates
+    import tenkin.templates as templates
 
     project_path = os.path.join(os.getcwd(),project_name)
 

@@ -6,6 +6,6 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/__pycache__": true,
-        "**/__init__.py": true,
+        "**/__init__.py": false,
     }
 }

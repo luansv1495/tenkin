@@ -1,5 +1,5 @@
 import os,shutil
-from exceptions import handler_message
+from tenkin.exceptions import handler_message
 
 items = [
         {'path':'\\public', 'type': 'folder'},
@@ -11,6 +11,7 @@ items = [
         {'path':'\\public\\logo512.png', 'type': 'file', 'template': './static/assets/logo512.png'},
         {'path':'\\public\\service-worker.js', 'type': 'file', 'template': './static/js/service-worker.js'},
         {'path':'\\src', 'type': 'folder'},
+        {'path':'\\src\\main.py', 'type': 'file', 'template': './static/python/main.py'},
 ]
 
 def _create_file(original: str, target: str):

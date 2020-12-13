@@ -11,17 +11,7 @@ class TenkinApp:
         req_path, req_type = await self.make_request_path(filename=scope['path'][1:])
 
         if os.path.exists(req_path):
-            await send({
-                'type': 'http.response.start',
-                'status': 200,
-                'headers': [
-                    [b'content-type', req_type],
-                ]
-            })
-            await send({
-                'type': 'http.response.body',
-                'body': open(req_path, "rb").read(),
-            })
+            await self.response(req_type=req_type,req_path=req_path,send=send)
         else:
             await self.handler_404_exception(send=send)
 

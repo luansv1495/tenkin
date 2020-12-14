@@ -15,6 +15,5 @@ class Label:
         if self.class_name in current_tree:
             return current_tree
         else:
-            #, f".{self.class_name} {self.style}"
             current_tree.append(self.class_name)
             return current_tree

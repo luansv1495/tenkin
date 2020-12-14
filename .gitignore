@@ -104,6 +104,8 @@ env/
 venv/
 ENV/
 teste/
+teste/public/
+teste/src/
 env.bak/
 venv.bak/
 

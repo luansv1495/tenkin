@@ -14,6 +14,5 @@ class Container:
         if self.class_name in current_tree:
             return current_tree
         else:
-            #, f".{self.class_name} {self.style}", [child.generate_css(current_tree=current_tree) for child in self.childrens]
             current_tree.append(self.class_name)
             return [child.generate_css(current_tree=current_tree) for child in self.childrens]

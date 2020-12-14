@@ -4,6 +4,7 @@ from tenkin.exceptions import handler_message
 items = [
         {'path':'\\public', 'type': 'folder'},
         {'path':'\\public\\index.html', 'type': 'file', 'template': './static/html/index.html'},
+        {'path':'\\public\\style.css', 'type': 'file', 'template': './static/css/style.css'},
         {'path':'\\public\\main.js', 'type': 'file', 'template': './static/js/main.js'},
         {'path':'\\public\\manifest.json', 'type': 'file', 'template': './static/json/manifest.json'},
         {'path':'\\public\\favicon.ico', 'type': 'file', 'template': './static/assets/favicon.ico'},

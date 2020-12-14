@@ -1,14 +1,14 @@
 import os,mimetypes,asyncio,sys
 from tenkin.exceptions import handler_message
+from tenkin.helper import generate_css_from_list
 
 class TenkinApp:
-    def __init__(
-        self
-    ):
+    def __init__(self):
         self.public_folder = "public"
         self.source_folder = "src"
         self.source_filename = "main.py"
         self.public_filename = "index.html"
+        self.style_filename = "style.css"
         self.source_path = os.path.join(os.getcwd(), self.source_folder)
         self.project_path = os.path.join(os.getcwd(), self.public_folder)
 
@@ -41,13 +41,24 @@ class TenkinApp:
 
         app = App()
 
-        return await self.join_project_source(source=app.generate())
+        return await self.join_project_source(source=app.generate_html())
+
+    async def make_project_style(self):
+        sys.path.append(self.source_path)
+
+        from main import App
+
+        app = App()
+
+        css_tag_list = app.generate_css(current_tree=[])[-1]
+
+        return generate_css_from_list(tag_list=css_tag_list)
 
     async def join_project_source(self,source: str):
         from bs4 import BeautifulSoup
 
         with open(os.path.join(self.project_path,self.public_filename)) as html_file:
-            source_soup = BeautifulSoup(source)
+            source_soup = BeautifulSoup(source, features='html.parser')
             root_soup = BeautifulSoup(html_file.read(), features='html.parser')
             html_file.close()
             root_div = root_soup.find(id="root")
@@ -58,6 +69,9 @@ class TenkinApp:
     async def response(self, req_type: str, req_path: str, send):
         if os.path.basename(req_path) == self.public_filename:
             response = await self.make_project()
+            response = response.encode()
+        elif os.path.basename(req_path) == self.style_filename:
+            response = await self.make_project_style()
             response = response.encode()
         else:
             response = open(req_path, "rb").read()

@@ -4,4 +4,6 @@ from tenkin.uix.label import Label
 class App(Container):
     def __init__(self):
         Container.__init__(self)
-        self.children = Label(text = "Ola gente")
+        self.childrens = [
+            Label(text = "Ola gente"),
+        ]

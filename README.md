@@ -35,6 +35,22 @@ pip install .
 python -m tenkin
 ```
 
+## Exemplo
+
+1. Use o comando 'create' para criar a estrutura básica de um projeto tenkin. Sera solicitado um nome para o projeto.
+
+```sh
+python -m tenkin create
+```
+
+2. Use o comando 'run' para executar o projeto em um ambiente de desenvolvimento.
+
+```sh
+python -m tenkin run
+```
+
+3. Acesse a partir de qualquer navegador com a url 'http://localhost:8000'
+
 [WSGI]: https://wsgi.readthedocs.io
 [pip]: https://pip.pypa.io/en/stable/quickstart/
 

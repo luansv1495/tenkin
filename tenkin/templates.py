@@ -2,17 +2,17 @@ import os,shutil
 from tenkin.exceptions import handler_message
 
 items = [
-        {'path':'\\public', 'type': 'folder'},
-        {'path':'\\public\\index.html', 'type': 'file', 'template': './static/html/index.html'},
-        {'path':'\\public\\style.css', 'type': 'file', 'template': './static/css/style.css'},
-        {'path':'\\public\\main.js', 'type': 'file', 'template': './static/js/main.js'},
-        {'path':'\\public\\manifest.json', 'type': 'file', 'template': './static/json/manifest.json'},
-        {'path':'\\public\\favicon.ico', 'type': 'file', 'template': './static/assets/favicon.ico'},
-        {'path':'\\public\\logo192.png', 'type': 'file', 'template': './static/assets/logo192.png'},
-        {'path':'\\public\\logo512.png', 'type': 'file', 'template': './static/assets/logo512.png'},
-        {'path':'\\public\\service-worker.js', 'type': 'file', 'template': './static/js/service-worker.js'},
-        {'path':'\\src', 'type': 'folder'},
-        {'path':'\\src\\main.py', 'type': 'file', 'template': './static/python/main.py'},
+        {'path':'/public', 'type': 'folder'},
+        {'path':'/public/index.html', 'type': 'file', 'template': '/static/html/index.html'},
+        {'path':'/public/style.css', 'type': 'file', 'template': '/static/css/style.css'},
+        {'path':'/public/main.js', 'type': 'file', 'template': '/static/js/main.js'},
+        {'path':'/public/manifest.json', 'type': 'file', 'template': '/static/json/manifest.json'},
+        {'path':'/public/favicon.ico', 'type': 'file', 'template': '/static/assets/favicon.ico'},
+        {'path':'/public/logo192.png', 'type': 'file', 'template': '/static/assets/logo192.png'},
+        {'path':'/public/logo512.png', 'type': 'file', 'template': '/static/assets/logo512.png'},
+        {'path':'/public/service-worker.js', 'type': 'file', 'template': '/static/js/service-worker.js'},
+        {'path':'/src', 'type': 'folder'},
+        {'path':'/src/main.py', 'type': 'file', 'template': '/static/python/main.py'},
 ]
 
 def _create_file(original: str, target: str):
@@ -34,6 +34,9 @@ def _create_folder(folder_path: str) -> bool:
         return True
 
 def create_project(project_path: str):
+    import tenkin
+    folder_package = os.path.dirname(os.path.abspath(tenkin.__file__))
+    
     if not _create_folder(folder_path=project_path) == True: 
         return False
 
@@ -41,6 +44,6 @@ def create_project(project_path: str):
         if item['type'] == 'folder':
             _create_folder(folder_path=project_path+item['path'])
         elif item['type'] == 'file':
-            _create_file(original = item['template'],target = project_path+item['path'])
+            _create_file(original=folder_package+item['template'],target=project_path+item['path'])
                 
     return True

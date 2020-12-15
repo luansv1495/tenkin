@@ -2,6 +2,8 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
+![Tenkin logo](tenkin/static/assets/logo192.png?raw=true "Tenkin")
+
 ## Tenkin
 
 Tenkin é um framework [WSGI] para aplicações web.
